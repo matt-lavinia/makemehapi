@@ -51,6 +51,7 @@ server.route ({
 });
 
 server.views({
+    helpersPath: 'helpers',
     engines: {
         html: require('handlebars')
     },
