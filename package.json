@@ -12,6 +12,7 @@
     "hapi": "^8.8.0"
   },
   "devDependencies": {
-    "handlebars": "^3.0.3"
+    "handlebars": "^3.0.3",
+    "rot13-transform": "^1.0.0"
   }
 }

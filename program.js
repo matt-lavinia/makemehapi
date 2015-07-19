@@ -1,6 +1,8 @@
 // Dependencies
 var Hapi = require('hapi');
 var Path = require('path');
+var fs = require('fs');
+var rot13 = require("rot13-transform");
 
 var server = new Hapi.Server();
 
@@ -18,10 +20,16 @@ server.connection({
 server.route ({
 	path: '/', 
 	method:'GET', 
-	handler: { 
-		view: 'index.html'
-	}
+	handler: transformROT13Handler
+	// handler: { 
+	// 	view: 'index.html'
+	// }
 });
+
+function transformROT13Handler ( request, reply ) {
+	reply(fs.createReadStream('./public/example.txt')
+		.pipe(rot13()));
+}
 
 server.route ({
 	path: '/{name}', 
